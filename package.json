@@ -4,20 +4,28 @@
   "description": "",
   "main": "server.ts",
   "scripts": {
+    "lint:check": "eslint --ignore-path .eslintignore --ext .js,.ts",
+    "link:fix": "eslint -fix",
     "start": "ts-node-dev --respawn --transpile-only src/server.ts",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "prettier:check": "prettier --ignore-path .gitignore --write \"**/*.+(js|ts|json)\""
   },
   "author": "me",
   "license": "ISC",
   "devDependencies": {
     "@types/cors": "^2.8.17",
+    "eslint-config-prettier": "^9.1.0",
+    "prettier": "^3.3.2",
     "ts-node-dev": "^2.0.0",
     "typescript": "^5.5.2"
   },
   "dependencies": {
     "@types/express": "^4.17.21",
+    "@typescript-eslint/eslint-plugin": "^7.14.1",
+    "@typescript-eslint/parser": "^7.14.1",
     "cors": "^2.8.5",
     "dotenv": "^16.4.5",
+    "eslint": "^9.6.0",
     "express": "^4.19.2",
     "mongoose": "^8.4.3"
   }
