@@ -9,7 +9,8 @@
     "start": "ts-node-dev --respawn --transpile-only src/server.ts",
     "link-prettier": "yarn lint:check && prettier:check",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "prettier:check": "prettier --ignore-path .gitignore --write \"**/*.+(js|ts|json)\""
+    "prettier:check": "prettier --ignore-path .gitignore --write \"**/*.+(js|ts|json)\"",
+    "prettier:fix":"prettier --write ."
   },
   "author": "me",
   "license": "ISC",
