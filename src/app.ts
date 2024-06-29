@@ -6,7 +6,10 @@ const port = 3000
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
 
-app.get('/', (req: Request, any) => {
+
+
+
+    app.get('/', (req: Requests, res: Response) => {
   res.send('Server is connected suc')
 })
 
