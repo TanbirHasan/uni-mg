@@ -1,4 +1,5 @@
 const winston = require('winston')
+import path from 'path'
 
 const logger = winston.createLogger({
   level: 'info',
@@ -6,9 +7,10 @@ const logger = winston.createLogger({
   defaultMeta: { service: 'user-service' },
   transports: [
     new winston.transports.Console(),
-    new winston.transports.File({ filename: 'info.log', level: 'info' }),
-
-    new winston.transports.File({ filename: 'combined.log' }),
+    new winston.transports.File({
+      filename: path.join(process.cwd(), 'logs', 'winston', 'success.log'),
+      level: 'info',
+    }),
   ],
 })
 
@@ -18,9 +20,10 @@ const errorLogger = winston.createLogger({
   defaultMeta: { service: 'user-service' },
   transports: [
     new winston.transports.Console(),
-    new winston.transports.File({ filename: 'error.log', level: 'error' }),
-
-    new winston.transports.File({ filename: 'combined.log' }),
+    new winston.transports.File({
+      filename: path.join(process.cwd(), 'logs', 'winston', 'error.log'),
+      level: 'error',
+    }),
   ],
 })
 
