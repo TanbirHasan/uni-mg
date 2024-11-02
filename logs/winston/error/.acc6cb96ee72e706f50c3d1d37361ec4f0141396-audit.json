@@ -1,0 +1,15 @@
+{
+    "keep": {
+        "days": true,
+        "amount": 14
+    },
+    "auditLog": "E:\\Next Level Web Trd Try 3-28-2024\\university-auth-management-server\\logs\\winston\\error\\.acc6cb96ee72e706f50c3d1d37361ec4f0141396-audit.json",
+    "files": [
+        {
+            "date": 1730572978013,
+            "name": "E:\\Next Level Web Trd Try 3-28-2024\\university-auth-management-server\\logs\\winston\\error\\uni-2024-11-03-00-error.log",
+            "hash": "8371e58812e1d502216c0351e5e068df9ae843f488a8b9808a3d2822ce6877b0"
+        }
+    ],
+    "hashType": "sha256"
+}

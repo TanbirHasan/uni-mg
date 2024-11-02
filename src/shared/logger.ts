@@ -1,28 +1,62 @@
-const winston = require('winston')
 import path from 'path'
+const { createLogger, format, transports } = require('winston')
+const { combine, timestamp, label, printf } = format
+import DailyRotateFile from 'winston-daily-rotate-file'
 
-const logger = winston.createLogger({
+type typeformat = {
+  level: string
+  message: string
+  lebel: string
+  timestamp: string
+}
+
+const myFormat = printf(({ level, message, label, timestamp }) => {
+  const date = new Date(timestamp)
+  const hour = date.getHours()
+  const minutes = date.getMinutes()
+  return `${date.toDateString()} ${hour}:${minutes} [${label}] ${level}: ${message}`
+})
+
+const logger = createLogger({
   level: 'info',
-  format: winston.format.json(),
+  format: combine(label({ label: 'right meow!' }), timestamp(), myFormat),
   defaultMeta: { service: 'user-service' },
   transports: [
-    new winston.transports.Console(),
-    new winston.transports.File({
-      filename: path.join(process.cwd(), 'logs', 'winston', 'success.log'),
-      level: 'info',
+    new transports.Console(),
+    new DailyRotateFile({
+      filename: path.join(
+        process.cwd(),
+        'logs',
+        'winston',
+        'success',
+        'uni-%DATE%-success.log',
+      ),
+      datePattern: 'YYYY-MM-DD-HH',
+      zippedArchive: true,
+      maxSize: '20m',
+      maxFiles: '14d',
     }),
   ],
 })
 
-const errorLogger = winston.createLogger({
+const errorLogger = createLogger({
   level: 'info',
-  format: winston.format.json(),
+  format: combine(label({ label: 'right meow!' }), timestamp(), myFormat),
   defaultMeta: { service: 'user-service' },
   transports: [
-    new winston.transports.Console(),
-    new winston.transports.File({
-      filename: path.join(process.cwd(), 'logs', 'winston', 'error.log'),
-      level: 'error',
+    new transports.Console(),
+    new DailyRotateFile({
+      filename: path.join(
+        process.cwd(),
+        'logs',
+        'winston',
+        'error',
+        'uni-%DATE%-error.log',
+      ),
+      datePattern: 'YYYY-MM-DD-HH',
+      zippedArchive: true,
+      maxSize: '20m',
+      maxFiles: '14d',
     }),
   ],
 })
