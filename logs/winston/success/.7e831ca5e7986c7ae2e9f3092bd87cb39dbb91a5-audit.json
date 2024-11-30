@@ -6,14 +6,19 @@
     "auditLog": "E:\\Next Level Web Trd Try 3-28-2024\\university-auth-management-server\\logs\\winston\\success\\.7e831ca5e7986c7ae2e9f3092bd87cb39dbb91a5-audit.json",
     "files": [
         {
-            "date": 1730572978000,
-            "name": "E:\\Next Level Web Trd Try 3-28-2024\\university-auth-management-server\\logs\\winston\\success\\uni-2024-11-03-00-success.log",
-            "hash": "c596d1727f516b5805699c455ab9e2bfff78c75a83de789235e8e61fbe0c7ec4"
+            "date": 1732554166701,
+            "name": "E:\\Next Level Web Trd Try 3-28-2024\\university-auth-management-server\\logs\\winston\\success\\uni-2024-11-25-23-success.log",
+            "hash": "7c3008f63ed797606e9ce302029aada6f80bbf010102e314674f5bc34d08df60"
         },
         {
-            "date": 1730644808988,
-            "name": "E:\\Next Level Web Trd Try 3-28-2024\\university-auth-management-server\\logs\\winston\\success\\uni-2024-11-03-20-success.log",
-            "hash": "c6cfaad52af1495de552d2426671a07b3c8d1589ec217b1a3cfa57ee1bbc0046"
+            "date": 1732936312482,
+            "name": "E:\\Next Level Web Trd Try 3-28-2024\\university-auth-management-server\\logs\\winston\\success\\uni-2024-11-30-09-success.log",
+            "hash": "dea96ae9063f731e95e344cfcc661f1e6b0361c35c588f05d5ff2ffd0396cf5e"
+        },
+        {
+            "date": 1732944047007,
+            "name": "E:\\Next Level Web Trd Try 3-28-2024\\university-auth-management-server\\logs\\winston\\success\\uni-2024-11-30-11-success.log",
+            "hash": "89273d58337d58391b0711f1f6f848b377d980a0b5fdbb5337c066686fbe6d6b"
         }
     ],
     "hashType": "sha256"
