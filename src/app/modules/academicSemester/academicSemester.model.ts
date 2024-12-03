@@ -8,6 +8,8 @@ import {
   academicSemesterMonth,
   academicSemesterTitle,
 } from './academicSemester.const'
+import ApiError from '../../../errors/ApiError'
+import { StatusCodes } from 'http-status-codes'
 
 const academicSemesterSchema = new Schema<IAcademicSemester>({
   title: {
@@ -36,7 +38,24 @@ const academicSemesterSchema = new Schema<IAcademicSemester>({
   },
 })
 
+academicSemesterSchema.pre('save', async function (next) {
+  const isExist = await AcademicSemester.findOne({
+    title: this.title,
+    year: this.year,
+  })
+  if (isExist) {
+    throw new ApiError(
+      StatusCodes.CONFLICT,
+      ' Academic semester is already exist!',
+    )
+  } else {
+    next()
+  }
+})
+
 export const AcademicSemester = model<IAcademicSemester, AcademicSemesterModel>(
   'AcademicSemester',
   academicSemesterSchema,
 )
+
+// for stopping posting same year same semester we have to check the data before saving into the database
