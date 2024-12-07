@@ -31,6 +31,7 @@ import sendResponse from '../../../shared/sendResponse'
 import { StatusCodes } from 'http-status-codes'
 import pick from '../../../shared/pick'
 import { paginationFields } from '../../../contants/pagination'
+import { IAcademicSemester } from './academicSemester.interface'
 
 const createAcademicSemster = catchAsync(
   async (req: Request, res: Response, next: NextFunction) => {
@@ -54,11 +55,12 @@ const getAllSemester = catchAsync(
     const paginationOption = pick(req.query, paginationFields)
     const result =
       await AcademicSemesterService.getAllSemester(paginationOption)
-    sendResponse(res, {
+    sendResponse<IAcademicSemester[]>(res, {
       statusCode: StatusCodes.OK,
       success: true,
       message: '',
-      data: result,
+      meta : result.meta,
+      data: result.data,
     })
   },
 )
