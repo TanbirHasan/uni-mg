@@ -34,7 +34,7 @@ import { paginationFields } from '../../../contants/pagination'
 import { IAcademicSemester } from './academicSemester.interface'
 
 const createAcademicSemster = catchAsync(
-  async (req: Request, res: Response, next: NextFunction) => {
+  async (req: Request, res: Response) => {
     console.log(req.body)
     const { ...academicSemesterData } = req.body
     const result =
@@ -45,26 +45,55 @@ const createAcademicSemster = catchAsync(
       message: 'Academic semester created successfully',
       data: result,
     })
-
-    next()
   },
 )
 
-const getAllSemester = catchAsync(
-  async (req: Request, res: Response, next: NextFunction) => {
-    const paginationOption = pick(req.query, paginationFields)
-    const result =
-      await AcademicSemesterService.getAllSemester(paginationOption)
-    sendResponse<IAcademicSemester[]>(res, {
-      statusCode: StatusCodes.OK,
-      success: true,
-      message: '',
-      meta : result.meta,
-      data: result.data,
-    })
-  },
-)
+const getAllSemester = catchAsync(async (req: Request, res: Response) => {
+  const filters = pick(req.query, ['searchTerm', 'title', 'code', 'year'])
+  const paginationOption = pick(req.query, paginationFields)
+  const result = await AcademicSemesterService.getAllSemester(
+    filters,
+    paginationOption,
+  )
+  sendResponse<IAcademicSemester[]>(res, {
+    statusCode: StatusCodes.OK,
+    success: true,
+    message: '',
+    meta: result.meta,
+    data: result.data,
+  })
+})
+
+const getSingleSemester = catchAsync(async (req: Request, res: Response) => {
+  const id = req.params.id
+  const result = await AcademicSemesterService.getSingleSemster(id)
+
+  sendResponse<IAcademicSemester>(res, {
+    statusCode: StatusCodes.OK,
+    success: true,
+    message: 'Semester retrived successfully',
+
+    data: result,
+  })
+})
+
+const updateSemester = catchAsync(async (req: Request, res: Response) => {
+  const id = req.params.id
+  const updatedData = req.body
+  const result = await AcademicSemesterService.updateSemester(id, updatedData)
+
+  sendResponse<IAcademicSemester>(res, {
+    statusCode: StatusCodes.OK,
+    success: true,
+    message: 'Semester updated successfully',
+
+    data: result,
+  })
+})
+
 export const AcademicSemesterController = {
   createAcademicSemster,
   getAllSemester,
+  getSingleSemester,
+  updateSemester,
 }

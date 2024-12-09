@@ -17,12 +17,25 @@ export type IAcademicSemsterMonth =
 export type IAcademicSemesterTitle = 'Autumn' | 'Summer' | 'Fall'
 export type IAcademicSemsterCode = '01' | '02' | '03'
 
+export type IGenericResponse<T> = {
+  meta: {
+    page: number
+    limit: number
+    total: number
+  }
+  data: T
+}
+
 export type IAcademicSemester = {
   title: IAcademicSemesterTitle
-  year: number
+  year: string
   code: IAcademicSemsterCode
   startMonth: IAcademicSemsterMonth
   endMonth: IAcademicSemsterMonth
 }
 
 export type AcademicSemesterModel = Model<IAcademicSemester>
+
+export type IAcademicSemesterFilter = {
+  searchTerm?: string
+}
