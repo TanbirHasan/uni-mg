@@ -16,6 +16,18 @@ const userSchema = new Schema<IUser>(
       type: String,
       required: true,
     },
+    student : {
+      ref : 'Student',
+      type : Schema.Types.ObjectId
+    },
+    faculty : {
+      ref : 'Faculty',
+      type : Schema.Types.ObjectId
+    },
+    admin : {
+      ref : 'Admin',
+      type : Schema.Types.ObjectId
+    }
   },
   { timestamps: true },
 )

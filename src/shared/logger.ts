@@ -4,13 +4,13 @@ const { combine, timestamp, label, printf } = format
 import DailyRotateFile from 'winston-daily-rotate-file'
 
 type typeformat = {
-  level: string
+  level: string 
   message: string
-  lebel: string
+  label: string
   timestamp: string
 }
 
-const myFormat = printf(({ level, message, label, timestamp }) => {
+const myFormat = printf(({ level, message, label, timestamp }: typeformat) => {
   const date = new Date(timestamp)
   const hour = date.getHours()
   const minutes = date.getMinutes()
